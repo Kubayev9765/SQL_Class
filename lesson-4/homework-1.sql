@@ -20,10 +20,12 @@ select *from Salesmen
 where  city='Paris' or city='Rome
 
 2. Salespeople in Paris or Rome
-select *from Salesmen
+	
+select *from Salesmen	
 where city in  ('Paris' , 'Rome' )
 
 3. Salespeople Not in Paris or Rome
+	
 select *from Salesmen
 where city not in  ('Paris' , 'Rome' )
 
@@ -33,3 +35,9 @@ where city not in  ('Paris' , 'Rome' )
 
 select *from Customers
 where customer_id in (3007,3008,3009)
+
+5. Salespeople with Commission 0.12-0.14
+	
+select *from Salesmen
+where commission between 0.12 and  0.14
+	
