@@ -29,9 +29,7 @@ where city in  ('Paris' , 'Rome' )
 select *from Salesmen
 where city not in  ('Paris' , 'Rome' )
 
-
 4. Customers with Specific IDs
-
 
 select *from Customers
 where customer_id in (3007,3008,3009)
@@ -40,4 +38,29 @@ where customer_id in (3007,3008,3009)
 	
 select *from Salesmen
 where commission between 0.12 and  0.14
+
+6. Orders Between 500-4000 Excluding Specific Amounts
+select * from  Orders
+where (purch_amt between 500 and 4000) 
+and purch_amt not in( 948.50 , 1983.43)
+
+7. Salespeople with Names N-O Range
+select *from Salesmen
+where name between 'A' and 'L'
+
+8. Salespeople with Names Not A-M Range
+select *from Salesmen
+where name not in( 'A' , 'M')
+	
+9. Customers with Names Starting with B	
+select *from Customers
+where cust_name like('B%')
+
+10. Customers with Names Ending with N
+select *from Customers
+where cust_name like('%N')
+
+11. Salespeople Name Starts 'N' with Fourth 'L'
+select *from Salesmen
+where name like ('N__l%')
 	
