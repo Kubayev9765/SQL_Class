@@ -1,147 +1,193 @@
-1. Display All Salespeople
+1.
+Here are the definitions of the terms:
+Data – Raw facts, figures, or information that can be processed or analyzed. 
+	Data can be in various formats, such as text, numbers, images, or symbols, and 	it serves as the foundation for making decisions.
+Database – A structured collection of data that is stored and managed to facilitate easy access, retrieval, and manipulation. 
+	Databases can be simple (like a file-based storage system) or complex (like relational databases with multiple interconnected tables).
+Relational Database – A type of database that organizes data into tables (relations) with predefined relationships between them. 
+	It uses structured query language (SQL) to store, retrieve, and manage data efficiently. 
+	Examples include MySQL, PostgreSQL, and Microsoft SQL Server
+Table – A structured format within a database that consists of rows (records) and columns (fields). 
+	Each column represents a specific attribute of the data, and each row represents a single record or entry in the table.
+2.
+	SQL Server, developed by Microsoft, is a powerful relational database management system (RDBMS). Here are five key features:
+High Availability and Disaster Recovery (HADR) – 	SQL Server provides built-in features like Always On Availability Groups, failover clustering, and database mirroring to ensure business continuity.
+Security and Compliance – It includes robust security features such as Transparent Data Encryption (TDE), Always Encrypted, Role-Based Access Control (RBAC), and auditing to comply with industry regulations.
+Performance Optimization – SQL Server offers Query Store, Dynamic Management Views (DMVs), and Intelligent Query Processing to enhance performance and troubleshoot queries efficiently.
+Integration and BI Capabilities – It supports SQL Server Integration Services (SSIS), SQL Server Reporting Services (SSRS), and SQL Server Analysis Services (SSAS) for ETL, reporting, and analytics.
+Scalability and Cloud Integration – SQL Server supports on-premises, hybrid, and cloud-based deployments with seamless integration into Microsoft Azure for high scalability and flexibility.
+3.
+When connecting to SQL Server, there are two main authentication modes:
+Windows Authentication Mode – This mode uses Windows credentials (Active Directory) for authentication. It relies on the user's Windows account to log in without requiring a separate username and password for SQL Server.
+SQL Server Authentication Mode – This mode requires a username and password created within SQL Server. The credentials are stored in SQL Server and managed separately from Windows accounts.
+4.
+CREATE DATABASE SchoolDB;
 
-
-create database Homework_1
-
-create table Salesman(
-	Salesman_ID int,
-	Name varchar(20),
-	City varchar(20),
-	Comission decimal(5,2)
-	)
-
-insert into Salesman values(5001, 'James Hoog', 'New York', 0.15)
-insert into Salesman values(5002, 'nail Knite', 'PAris', 0.13),
-							(5005, 'Pit Alex','London', 0.11),
-							(5006,'Mc Lyon', 'Paris', 0.14),
-							(5007, 'Paul Adom', 'Rome', 0.13),
-							(5003, 'Lausan Hen', 'San Jose', 0.12)
-select *from Salesman
-
-2. Display a Custom String
-SELECT
-
-3. Display Three Numbers
-SELECT 25, 45, 55, 65
-
-5. Arithmetic Expression Result
-SELECT 25+45+55*65
-
-  
-6. Specific Columns of Salespeople
-SELECT Salesman_ID, Name
-FROM Salesman
-
-
-
-  7. Custom Column Order in Orders
-
-CREATE TABLE Orders (
-    ord_no INT PRIMARY KEY,
-    purch_amt DECIMAL(10, 2) NOT NULL,
-    ord_date DATE NOT NULL,
-    customer_id INT NOT NULL,
-    salesman_id INT NOT NULL,
-   
+5.
+	CREATE TABLE Students (
+    StudentID INT PRIMARY KEY,
+    Name VARCHAR(50),
+    Age INT
 );
+6.
+SQL Server, SSMS, and SQL are related but serve different purposes in the database world. Here's how they differ:
+SQL Server (Microsoft SQL Server)
+A Relational Database Management System (RDBMS) developed by Microsoft.
+It is used to store, manage, and retrieve data efficiently.
+Provides security, scalability, and support for various data types.
+Supports T-SQL (Transact-SQL), Microsoft's extension of SQL.
+Includes services like SQL Server Agent (for automation), Reporting Services (SSRS), Integration Services (SSIS), and Analysis Services (SSAS).
+SSMS (SQL Server Management Studio)
+A Graphical User Interface (GUI) tool used to manage SQL Server.
+Allows users to write and execute SQL queries, design databases, and manage database objects.
+Provides features like query execution plans, performance monitoring, and security configuration.
+Mainly used by database administrators and developers for database management and troubleshooting.
+SQL (Structured Query Language)
+A programming language used for managing and querying relational databases.
+Standardized by ANSI and used in various database systems like SQL Server, MySQL, PostgreSQL, and Oracle.
+Includes commands like SELECT, INSERT, UPDATE, and DELETE.
+T-SQL (used in SQL Server) extends standard SQL with procedural features like variables, loops, and error handling.
 
-INSERT INTO Orders (ord_no, purch_amt, ord_date, customer_id, salesman_id) VALUES
-(70001, 150.5, '2012-10-05', 3005, 5002),
-(70009, 270.65, '2012-09-10', 3001, 5005),
-(70002, 65.26, '2012-10-05', 3002, 5001),
-(70004, 110.5, '2012-08-17', 3009, 5003),
-(70007, 948.5, '2012-09-10', 3005, 5002),
-(70005, 2400.6, '2012-07-27', 3007, 5001),
-(70008, 5760, '2012-09-10', 3002, 5001),
-(70010, 1983.43, '2012-10-10', 3004, 5006),
-(70003, 2480.4, '2012-10-10', 3009, 5003),
-(70012, 250.45, '2012-06-27', 3008, 5002),
-(70011, 75.29, '2012-08-17', 3003, 5007),
-(70013, 3045.6, '2012-04-25', 3002, 5001);
+Summary:
+SQL Server = The actual database system.
+SSMS = The tool to interact with SQL Server.
+SQL = The language used to query and manipulate data.
+Let me know if you need further clarification! 😊
+7.
+1. DQL (Data Query Language)
+Purpose: Used to retrieve data from a database.
+Command: SELECT
+Example:
+SELECT * FROM employees WHERE department = 'Sales';
+Explanation: Retrieves all records from the employees table where the department is 'Sales'.
+2. DML (Data Manipulation Language)
+Purpose: Used for modifying data in tables.
+Commands:
+INSERT: Adds new records to a table.
+UPDATE: Modifies existing records.
+DELETE: Removes records from a table.
+Examples:
 
+INSERT INTO employees (id, name, department) VALUES (1, 'Alice', 'HR');
 
-SELECT ord_date, salesman_id, ord_no, purch_amt
-FROM orders;
+UPDATE employees SET department = 'Marketing' WHERE name = 'Alice';
 
-8. Unique Salespeople IDs
-SELECT salesman_id
-FROM orders;
+DELETE FROM employees WHERE name = 'Alice';
+Explanation:
+The INSERT statement adds a new employee.
+The UPDATE statement changes Alice’s department.
+The DELETE statement removes Alice’s record.
 
-9. Salespeople in Paris
-select Name, City 
-from Salesman
-where City='Paris'
-
-
-10. Customers with Grade 200
-create table Customer(
-					Customer_ID int,
-					Cust_Name varchar(20),
-					City varchar(20),
-					Grade int,
-					Salesman_ID int
-					)
-
-insert into Customer values(3002, 'Nick Rimando', 'New York', 100, 5001)
-insert into Customer values(3007, 'Brad Davis', 'New York', 200, 5001)
-insert into Customer values(3005, 'Graham Zusi', 'California', 200, 5002)
-insert into Customer values(3008, 'Julian Green', 'London', 300, 5002)
-insert into Customer values(3004, 'Fabian Johnson', 'Paris', 300, 5006)
-insert into Customer values(3009, 'Geoff Cameron', 'Berlin', 100, 5003)
-insert into Customer values(3003, 'Jozy Altidor', 'Moskow', 200, 5007)
-insert into Customer values(3001, 'Brad Guzan', 'London', NULL  , 5005)
-
-
-
-select Customer_ID, Cust_Name,City,Grade,Salesman_ID
-from Customer
-where Grade=200
-
-11. Orders by Salesperson 5001
-select ord_no, ord_date, purch_amt
-from Orders
-where Salesman_id=5001
-
-12. Nobel Winner of 1970
-
-	create table Nobel_Win(
-	YEAR INT,
-	SUBJECT VARCHAR(20),
-	WINNER VARCHAR(20),
-	COUNTRY VARCHAR(20),
-	CATEGORY VARCHAR(20)
-	)
+3. DDL (Data Definition Language)
+Purpose: Defines and modifies database structure.
+Commands:
+CREATE: Creates a new database object (table, view, index, etc.).
+ALTER: Modifies an existing object.
+DROP: Deletes an object.
+TRUNCATE: Removes all records from a table without logging individual row deletions.
+Examples:
 
 
+CREATE TABLE employees (
+    id INT PRIMARY KEY,
+    name VARCHAR(50),
+    department VARCHAR(50)
+)
+
+ALTER TABLE employees ADD COLUMN salary DECIMAL(10,2);
+DROP TABLE employees;
+Explanation:
+CREATE defines a new table.
+ALTER adds a new column (salary).
+DROP permanently deletes the table.
+
+4. DCL (Data Control Language)
+Purpose: Manages permissions and access controls.
+
+Commands:
+GRANT: Gives permissions.
+REVOKE: Removes permissions.
+Examples:
+
+GRANT SELECT, INSERT ON employees TO user1;
+REVOKE INSERT ON employees FROM user1;
+Explanation:
+GRANT allows user1 to select and insert data in the employees table.
+REVOKE removes the insert permission from user1.
+
+5. TCL (Transaction Control Language)
+Purpose: Manages transactions to ensure data integrity.
+Commands:
+COMMIT: Saves changes permanently.
+ROLLBACK: Undoes changes if needed.
+SAVEPOINT: Creates a point within a transaction to rollback to.
+Examples:
+BEGIN TRANSACTION;
+UPDATE employees SET salary = salary + 500 WHERE department = 'Sales';
+SAVEPOINT before_bonus;
+UPDATE employees SET salary = salary + 1000 WHERE department = 'HR';
+ROLLBACK TO before_bonus;
+COMMIT;
+Explanation:
+Begins a transaction.
+Increases salary for the Sales department.
+Creates a savepoint before updating HR salaries.
+Rolls back to the savepoint (undoing only the HR salary update).
+COMMIT permanently saves the changes.
+	
+8.
+INSERT INTO Students (StudentID, FirstName, LastName, Age, Grade)
+VALUES 
+    (1, 'John', 'Doe', 18, 'A'),
+    (2, 'Jane', 'Smith', 19, 'B'),
+    (3, 'Michael', 'Johnson', 20, 'A');
+
+9.
+Steps to Backup and Restore a SchoolDB Database
+Backup Process
+Open the Command Prompt (Windows) or Terminal (Linux/Mac).
 
 
-insert into Nobel_Win values(1970, 'Physics','Hannes Alfven','Sweden', 'Scientist')
-insert into Nobel_Win values(		1970, 'Physics','Hannes Alfven','Sweden', 'Scientist')
-insert into Nobel_Win values(		1970, 'Physics','Louis Neel', 'France', 'Scientist')
-insert into Nobel_Win values(		1970, 'Chemistry',' Luis Federico Lel','France','Scientist')
-insert into Nobel_Win values(		1970, 'Physiology',' Ulf von Euler',' Sweden',' Scientist')
-insert into Nobel_Win values(		1970, 'Physiology',' Bernard Katz',' Germany ',' Scientist')
-insert into Nobel_Win values(		1970, 'Literature ', 'Aleksandr', ' Solzhenitsyn',  'Russia')
-insert into Nobel_Win values(		1970, 'Economics ',  'Paul Samuelson ', 'USA', 'Economist')
-insert into Nobel_Win values(		1971, 'Physics ',  'Dennis Gabor ', 'Hungary ','Scientist')
-insert into Nobel_Win values(		1971, 'Chemistry ', ' Gerhard Herzberg', ' Germany ','Scientist')
-insert into Nobel_Win values(		1971, 'Peace ',  ' Willy Brandt', 'Germany ', 'Chancellor')
-insert into Nobel_Win values(		1971, 'Literature ', 'Pablo Neruda ','Chile ', 'Linguist')
-insert into Nobel_Win values(		1971, 'Economics','  Simon Kuznets ', 'Russia', 'Economist')
-insert into Nobel_Win values(		1978, 'Peace', ' Anwar al-Sadat  ',  'Egypt ',  'President')
-insert into Nobel_Win values(		1978, 'Peace  ', ' Menachem Begin ', 'Israel', 'Prime Minister')
-insert into Nobel_Win values(		1987, 'Chemistry ','Donald J. Cram ', 'USA  ', 'Scientist')
-insert into Nobel_Win values(		1987, 'Chemistry', 'Jean-Marie Lehn', 'France', 'Scientist')
-insert into Nobel_Win values(		1987, 'Physiology', 'Susumu Tonegawa', 'Japan ', 'Scientist')
-insert into Nobel_Win values(		1994, 'Economics', 'Reinhard Selten', 'Germany','Economist')
-insert into Nobel_Win values(		1994, 'Peace', 'Yitzhak Rabin', 'Israel ', 'Prime Minister')
-insert into Nobel_Win values(		1987, 'Physics', 'Johannes Georg Bednorz', 'Germany ', 'Scientist')
-insert into Nobel_Win values(		1987, 'Literature',' Joseph Brodsky','Russia ','Linguist')
-insert into Nobel_Win values(		1987, 'Economics',' Robert Solow','USA ','Economist')
-insert into Nobel_Win values(		1994, 'Literature',' Kenzaburo Oe ', 'Japan','Linguist')
+cd C:\xampp\mysql\bin  # For XAMPP users on Windows
+Execute the mysqldump command to create a backup:
+mysqldump -u root -p SchoolDB > C:\backup\SchoolDB_backup.sql
+Replace root with your MySQL username.
+Enter your password when prompted.
+Change C:\backup\SchoolDB_backup.sql to your desired backup location.
+
+Restore Process
+Open the Command Prompt (Windows) or Terminal (Linux/Mac).
+Navigate to MySQL bin directory if necessary.
+Login to MySQL:
+
+mysql -u root -p
+Enter your MySQL password when prompted.
+
+Create the SchoolDB database if it does not exist:
+
+CREATE DATABASE SchoolDB;
+Exit MySQL and Restore the Backup:
+
+
+mysql -u root -p SchoolDB < C:\backup\SchoolDB_backup.sql
+This restores all tables and data from the backup file.
+
+Verification
+Login to MySQL again:
+
+
+mysql -u root -p
+Check if the database is restored:
+
+SHOW DATABASES;
+USE SchoolDB;
+SHOW TABLES;
+Now, your SchoolDB database is successfully backed up and restored!
 
 
 
-select YEAR, SUBJECT, WINNER
-from Nobel_Win
-where YEAR=1970
+
+
+
+
+
