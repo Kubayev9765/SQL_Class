@@ -80,4 +80,53 @@ ALTER TABLE Employees RENAME TO StaffMembers
 16.
 DROP TABLE Departments
 
+17.
+CREATE TABLE Products (
+    ProductID INT PRIMARY KEY,
+    ProductName VARCHAR(100) NOT NULL,
+    Category VARCHAR(50),
+    Price DECIMAL(10, 2),
+    StockQuantity INT
+)
+
+18.
+ALTER TABLE Order
+ADD CONSTRAINT Price CHECK (Price > 0)
+
+19.
+ALTER TABLE Customers
+ADD Customer_Age INT DEFAULT 50
+
+20.
+ALTER TABLE Category RENAME TO ProductCategory
+
+21.
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity)
+VALUES (1, 'Wireless Mouse', 'Electronics', 25.99, 100);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity)
+VALUES (2, 'Bluetooth Speaker', 'Electronics', 49.99, 50);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity)
+VALUES (3, 'Coffee Mug', 'Kitchenware', 9.99, 200);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity)
+VALUES (4, 'Notebook', 'Stationery', 3.49, 500);
+INSERT INTO Products (ProductID, ProductName, Category, Price, StockQuantity)
+VALUES (5, 'LED Desk Lamp', 'Home Decor', 18.75, 75)
+
+22.
+SELECT * INTO Products_Backup
+FROM Products
+
+23.
+ALTER TABLE Products RENAME TO Inventory;
+
+24.
+ALTER TABLE Inventory
+MODIFY COLUMN Price FLOAT
+
+25.
+ALTER TABLE Products
+ADD ProductCode INT IDENTITY(1000, 5)
+
+
+
 
